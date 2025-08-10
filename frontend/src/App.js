@@ -1,18 +1,21 @@
-import React from 'react';
-import MonthlySpendingChart from './components/MonthlySpendingChart';
-import CategoryPieChart from './components/CategoryPieChart';
-import ExpenseTable from './components/ExpenseTable';
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import AnalyticsPage from "./components/AnalyticsPage";
 
-function App(){
+function App() {
   return (
-    <div style={{padding:20}}>
-      <h1>Expense Analytics Dashboard</h1>
-      <div style={{display:'flex', gap:20}}>
-        <div style={{flex:1}}><MonthlySpendingChart/></div>
-        <div style={{flex:1}}><CategoryPieChart/></div>
-      </div>
-      <div style={{marginTop:20}}><ExpenseTable/></div>
-    </div>
+    <Router>
+      <nav className="p-4 bg-gray-800 text-white flex gap-4">
+        <Link to="/">Home</Link>
+        <Link to="/analytics">Analytics</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/analytics" element={<AnalyticsPage />} />
+      </Routes>
+    </Router>
   );
 }
+
 export default App;
